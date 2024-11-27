@@ -1,101 +1,230 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { hotels } from '@/app/data/hotels';
+import { PaperAirplaneIcon, BuildingOfficeIcon, SparklesIcon } from '@heroicons/react/24/solid';
+
+export default function HomePage() {
+  const [isSearching, setIsSearching] = useState(false);
+  const [flights, setFlights] = useState<any[]>([]);
+
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSearching(true);
+
+    setTimeout(() => {
+      setFlights([
+        { id: 1, from: 'Istanbul', to: 'Antalya', date: '2024-12-01', price: '$120' },
+        { id: 2, from: 'Ankara', to: 'Izmir', date: '2024-12-05', price: '$90' },
+        { id: 3, from: 'Istanbul', to: 'Dubai', date: '2024-12-10', price: '$450' },
+      ]);
+      setIsSearching(false);
+    }, 2000);
+  };
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+      <div>
+        {/* Hero Section */}
+        <section
+            className="relative h-[500px] bg-cover bg-center flex items-center justify-center"
+            style={{
+              backgroundImage: `url('https://images.unsplash.com/photo-1472938714740-c788a1dbfa12?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
+            }}
+        >
+          <div className="text-center bg-white bg-opacity-70 py-4 px-6 rounded-md shadow-lg">
+            <h1 className="text-5xl font-extrabold text-[#1b4747] mb-4">
+              Discover Halal-Friendly Travel
+            </h1>
+            <p className="text-lg text-gray-700">Plan your perfect trip with ease.</p>
+          </div>
+        </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        {/* Services Section */}
+        <section id="services" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-6 text-center">
+            <h2 className="text-3xl font-bold mb-8">Our Services</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  title: 'Hotel Reservations',
+                  description: 'Find halal-certified accommodations worldwide.',
+                  Icon: BuildingOfficeIcon,
+                },
+                {
+                  title: 'Airport Transfers',
+                  description: 'Reliable, hassle-free transfers to your destination.',
+                  Icon: PaperAirplaneIcon,
+                },
+                {
+                  title: 'Special Offers',
+                  description: 'Enjoy exclusive deals on luxury travel packages.',
+                  Icon: SparklesIcon,
+                },
+              ].map((service, index) => (
+                  <div
+                      key={index}
+                      className="p-6 bg-white rounded-lg shadow hover:scale-105 transition-transform"
+                  >
+                    <service.Icon className="h-12 w-12text-[#1b4747] mx-auto mb-4" />
+                    <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+                    <p className="text-gray-600">{service.description}</p>
+                  </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Recommended Hotels Section */}
+        <section id="hotels" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-6">
+            <h2 className="text-3xl font-bold mb-8 text-center">Recommended Hotels</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {hotels.slice(0, 3).map((hotel) => (
+                  <div
+                      key={hotel.id}
+                      className="rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-transform"
+                  >
+                    <div className="relative w-full h-48">
+                      <Image
+                          src={hotel.images[0]}
+                          alt={hotel.name}
+                          layout="fill"
+                          objectFit="cover"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <h3 className="text-xl font-bold">{hotel.name}</h3>
+                      <p className="text-gray-600">{hotel.location}</p>
+                      <p className="text-[#1b4747] font-bold mt-2">${hotel.price} / night</p>
+                      <Link
+                          href={`/hotels/${hotel.id}`}
+                          className="mt-4 inline-block text-white bg-[#1b4747] px-4 py-2 rounded hover:bg-[#145e5e]"
+                      >
+                        View Details
+                      </Link>
+                    </div>
+                  </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Flight Search Section */}
+        <section id="flights" className="py-16 bg-gray-100">
+          <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form
+                onSubmit={handleSearch}
+                className="bg-white text-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full"
+            >
+              <h2 className="text-2xl font-bold mb-4 text-center text-[#1b4747]">Book Your Flight</h2>
+              <div className="mb-4">
+                <label htmlFor="from" className="block text-gray-700">
+                  From
+                </label>
+                <input
+                    type="text"
+                    id="from"
+                    placeholder="Enter departure city"
+                    className="w-full border border-gray-300 rounded-lg p-2 mt-1"
+                    required
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="to" className="block text-gray-700">
+                  To
+                </label>
+                <input
+                    type="text"
+                    id="to"
+                    placeholder="Enter destination city"
+                    className="w-full border border-gray-300 rounded-lg p-2 mt-1"
+                    required
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="departure" className="block text-gray-700">
+                  Departure Date
+                </label>
+                <input
+                    type="date"
+                    id="departure"
+                    className="w-full border border-gray-300 rounded-lg p-2 mt-1"
+                    required
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="return" className="block text-gray-700">
+                  Return Date
+                </label>
+                <input
+                    type="date"
+                    id="return"
+                    className="w-full border border-gray-300 rounded-lg p-2 mt-1"
+                />
+              </div>
+              <button
+                  type="submit"
+                  className="w-full px-4 py-2 bg-[#145e5e] text-white font-bold rounded-lg hover:bg-blue-700 transition"
+              >
+                Search Flights
+              </button>
+            </form>
+            {isSearching && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                  <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 className="text-2xl font-bold text-[#145e5e] mb-4">Searching...</h3>
+                    <p className="text-gray-700">Please wait while we find the best options for you.</p>
+                  </div>
+                </div>
+            )}
+            {flights.length > 0 ? (
+                <div className="bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full">
+                  <h2 className="text-2xl font-bold text-[#145e5e] mb-4">Flight Results</h2>
+                  <ul>
+                    {flights.map((flight) => (
+                        <li
+                            key={flight.id}
+                            className="border-b border-gray-300 py-3 flex justify-between items-center"
+                        >
+                          <div>
+                            <p className="font-bold">
+                              {flight.from} → {flight.to}
+                            </p>
+                            <p className="text-gray-600 text-sm">{flight.date}</p>
+                          </div>
+                          <p className="font-bold text-[#145e5e]">{flight.price}</p>
+                        </li>
+                    ))}
+                  </ul>
+                </div>
+            ) : (
+                <div className="flex flex-col justify-center bg-[#bccac3] p-6 rounded-lg shadow-lg">
+                  <h2 className="text-2xl font-bold mb-4 text-[#145e5e]">Why Book with Us?</h2>
+                  <p className="text-gray-700 mb-4">
+                    Enjoy hassle-free flight bookings with halal-friendly options. Whether you are traveling
+                    for business or leisure, we ensure the best deals for you.
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex items-center">
+                      <PaperAirplaneIcon className="h-6 w-6 text-[#145e5e] mr-2"/>
+                      Reliable and affordable flights.
+                    </li>
+                    <li className="flex items-center">
+                      <PaperAirplaneIcon className="h-6 w-6 text-[#145e5e] mr-2"/>
+                      Exclusive halal-friendly packages.
+                    </li>
+                    <li className="flex items-center">
+                      <PaperAirplaneIcon className="h-6 w-6 text-[#145e5e] mr-2"/>
+                      24/7 customer support for all your needs.
+                    </li>
+                  </ul>
+                </div>
+
+            )}
+          </div>
+        </section>
+      </div>
   );
 }
