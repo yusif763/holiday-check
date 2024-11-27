@@ -11,15 +11,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en">
         <body className="bg-gray-50 text-gray-800">
-        {/* Navbar */}
         <header className="fixed top-0 left-0 w-full bg-white shadow-lg z-50 transition-transform duration-500 ease-in-out">
             <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-                {/* Logo */}
                 <h1 className="text-2xl font-bold text-[#1b4747]">
                     <Link href="/">HalalHolidayCheck</Link>
                 </h1>
 
-                {/* Hamburger Icon for Mobile */}
                 <div className="lg:hidden">
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
