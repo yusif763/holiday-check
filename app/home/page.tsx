@@ -6,9 +6,16 @@ import Image from 'next/image';
 import { hotels } from '@/app/data/hotels';
 import { PaperAirplaneIcon, BuildingOfficeIcon, SparklesIcon } from '@heroicons/react/24/solid';
 
+interface Flight {
+    id: number;
+    from: string;
+    to: string;
+    date: string;
+    price: string;
+  }
 export default function HomePage() {
     const [isSearching, setIsSearching] = useState(false);
-    const [flights, setFlights] = useState<any[]>([]);
+    const [flights, setFlights] = useState<Flight[]>([]); 
 
     const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

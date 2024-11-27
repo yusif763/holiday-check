@@ -6,9 +6,19 @@ import Image from 'next/image';
 import { hotels } from '@/app/data/hotels';
 import { PaperAirplaneIcon, BuildingOfficeIcon, SparklesIcon } from '@heroicons/react/24/solid';
 
+
+interface Flight {
+  id: number;
+  from: string;
+  to: string;
+  date: string;
+  price: string;
+}
+
+
 export default function HomePage() {
   const [isSearching, setIsSearching] = useState(false);
-  const [flights, setFlights] = useState<any[]>([]);
+  const [flights, setFlights] = useState<Flight[]>([]);
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,7 +50,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Services Section */}
         <section id="services" className="py-16 bg-gray-50">
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-3xl font-bold mb-8">Our Services</h2>
