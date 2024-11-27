@@ -26,7 +26,6 @@ export default function HomePage() {
 
   return (
       <div>
-        {/* Hero Section */}
         <section
             className="relative h-[500px] bg-cover bg-center flex items-center justify-center"
             style={{
