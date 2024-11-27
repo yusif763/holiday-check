@@ -1,4 +1,4 @@
-export default function HotelDetailsPage({ params }: { params: { id: string } }) {
+export default function HotelDetailsPage() {
     const hotel = {
         name: "Luxury Halal Hotel",
         description: "A luxurious hotel experience with halal-friendly amenities.",

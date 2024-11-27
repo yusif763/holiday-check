@@ -1,13 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { use, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { hotels } from '@/app/data/hotels';
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/24/solid';
 
-export default function HotelDetails({ params }: { params: { id: string } }) {
-    const hotel = hotels.find((h) => h.id === parseInt(params.id));
+export default function HotelDetails({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = use(params);
+    const hotel = hotels.find((h) => h.id === parseInt(id));
     const [bookingData, setBookingData] = useState({
         checkIn: '',
         checkOut: '',

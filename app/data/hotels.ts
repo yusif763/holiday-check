@@ -72,7 +72,7 @@ export const hotels = [
         roomTypes: ["Standard Room", "Deluxe Room", "Cabin"],
     },
     {
-        id: 1,
+        id: 4,
         name: "Luxury Halal Hotel in Bali",
         location: "Bali, Bali",
         price: 150,
@@ -96,7 +96,7 @@ export const hotels = [
         roomTypes: ["Single Room", "Double Room", "Family Suite", "Presidential Suite"],
     },
     {
-        id: 1,
+        id: 5,
         name: "Luxury Halal Hotel in Hawai",
         location: "Hawai, Hawai",
         price: 150,
@@ -120,7 +120,7 @@ export const hotels = [
         roomTypes: ["Single Room", "Double Room", "Family Suite", "Presidential Suite"],
     },
     {
-        id: 1,
+        id: 6,
         name: "Luxury Halal Hotel in Maldives",
         location: "Maldives, Maldives",
         price: 150,
